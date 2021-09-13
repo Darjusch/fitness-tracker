@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+{% block title %}Add a training{% endblock %}
+{% block site_css %}{% endblock %}
+{% block body %}
+    <h1>Add a Training</h1>
+    
+    <form method="post"  action="{% url 'profile' 999%}" >
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}

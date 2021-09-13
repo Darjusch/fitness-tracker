@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+{% block title %}Document{% endblock %}
+{% block site_css %}    
+{% endblock %}
+{% block body %}
+    <h1>Welcome to Your Personal Fitness Tracker!</h1>
+    <img id="bg" src="{% static 'userauth/media/fitness.jpeg' %}" alt="My image" style="width:1000px;height:400px;">    <img/>
+    {% if user.is_authenticated %}
+    <h2>You are logged in as: {{ user.username}}</h2>
+    {% else %}
+    <h2>You are not logged in</h2>
+    <a href="{% url 'register' %}"><h3>Register now</h3></a>
+    <h3>Already have an account? </h3>
+    <a href="accounts/login"><h3>Login here</h3></a>
+    {% endif %}
+{% endblock %}
