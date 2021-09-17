@@ -20,10 +20,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '*teue-3%1$&v+j&*sp9i2y6o30xyn4df3=h9c8)^!!gs8!oq9i'
+# SECRET_KEY = os.environ['SECRET_KEY']
+
+# Dev only Key 
+SECRET_KEY = '#*z&7_qe2+#q8$!%=pyl)7x!td=epwso@p5km&pjin6te&@a(6'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1']
 
@@ -77,8 +81,17 @@ WSGI_APPLICATION = 'testauth.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+        'NAME': 'test_db',
+
+        'USER': 'root',
+
+        'PASSWORD': 'root',
+
+        'HOST': 'db',
+
+        'PORT': '5432',
     }
 }
 
@@ -122,3 +135,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/profile'
 LOGOUT_REDIRECT_URL = '/'
+
+
+# Override production variables if DJANGO_DEVELOPMENT env variable is set
+if os.environ.get('DJANGO_DEVELOPMENT'):
+    from .settings_dev import *  # or specific overrides
