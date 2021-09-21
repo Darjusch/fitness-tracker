@@ -139,3 +139,5 @@ LOGOUT_REDIRECT_URL = '/'
 # Override production variables if DJANGO_DEVELOPMENT env variable is set
 if os.environ.get('DJANGO_DEVELOPMENT'):
     from .settings_dev import *  # or specific overrides
+
+DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
