@@ -21,7 +21,7 @@ def register(request):
             password = form.cleaned_data['password1'] 
             user = authenticate(username=username, password=password) 
             login(request, user) 
-            return redirect('profile')
+            return redirect('profile', 999)
     else:
         form = UserCreationForm()
 
@@ -35,6 +35,9 @@ def register(request):
 #     the data is the same for every user,
 #     and the data does not change often.
 
+
+# see how fast each page of your application loads to see where performance issues exists:
+#  loadtest -n 100 -k  http://localhost:8000/cookbook/
 
 
 def profile(request, duration):
