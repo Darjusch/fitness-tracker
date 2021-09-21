@@ -6,7 +6,9 @@
 {% endblock %}
 {% block body %}
     <h1>Welcome to Your Personal Fitness Tracker!</h1>
-    <img id="bg" src="{% static 'userauth/media/fitness.jpeg' %}" alt="My image" style="width:1000px;height:400px;">    <img/>
+    <!-- <img id="bg" src="{% static 'userauth/media/fitness.jpeg' %}" alt="My image" style="width:1000px;height:400px;">    <img/> -->
+    <img id="bg" src="https://darjusch-ftp-server.fra1.digitaloceanspaces.com/fitness.jpeg" alt="My image" style="width:1000px;height:400px;">    <img/>
+
     {% if user.is_authenticated %}
     <h2>You are logged in as: {{ user.username}}</h2>
     {% else %}
